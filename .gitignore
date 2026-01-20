@@ -1,0 +1,37 @@
+rubbish_bin
+results
+exps
+repo_*/
+# repo_readme_[0-9]*/
+# repo_readme*/
+evaluation
+**/*.pyc
+.DS_Store
+**/.DS_Store
+**/.coverage
+api_coverage_agents_results.json
+api_coverage_agents_table.tex
+api_coverage_ide_results.json
+api_coverage_ide_table.tex
+api_coverage_results.json
+api_coverage_table.tex
+debug_eval.log
+loose_requirements.txt
+merged_requirements.txt
+test_redirect.txt
+repo_ori/.DS_Store
+repo_readme/.DS_Store
+agent/
+copy_tests_folders.py
+delete_tests_folders.py
+calculate_ac_qwen3.py
+java_difficulty_classification.json
+output.txt
+README_gen_test.md
+*.zip
+repository_difficulty_classification_1112.json
+repository_difficulty_classification.json
+requirements_gen_test.txt
+sf*
+.cursorrules
+test_evaluate_repos.py

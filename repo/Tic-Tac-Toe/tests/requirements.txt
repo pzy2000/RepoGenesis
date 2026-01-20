@@ -1,0 +1,4 @@
+# ProjectD API Test Dependencies
+pytest>=7.4.0
+requests>=2.31.0
+pytest-timeout>=2.1.0
