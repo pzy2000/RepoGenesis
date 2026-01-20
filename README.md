@@ -1,73 +1,39 @@
-# RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository
+# RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository 🚀
 
-This repository contains the code and data for the RepoGenesis benchmark, a comprehensive evaluation framework for assessing large language models' capability in generating complete web microservice repositories from natural language requirements.
+This repository contains the code and data for RepoGenesis, the first multilingual benchmark for repository-level end-to-end web microservice generation. RepoGenesis assesses LLMs' capability in generating complete web microservice repositories from natural language requirements.
 
-> **Anonymous Submission**: This repository is provided for anonymous review. All author-identifying information has been removed.
+## Overview ⭐
 
-## Overview
+<div align="center">
+  <img width="90%" src="RepoGenesis.png">
+</div>
 
-RepoGenesis is the first comprehensive benchmark for evaluating repository-level code generation from natural language requirements. Unlike existing benchmarks that focus on function-level or class-level code generation, RepoGenesis challenges models to generate complete, functional repositories from scratch.
+RepoGenesis is the first benchmark for evaluating repository-level microservice generation from natural language requirements. Unlike existing benchmarks that focus on function-level or class-level code generation, RepoGenesis challenges LLMs to generate repositories from scratch.
 
 **Key Features:**
 - **106 diverse web microservice repositories** (60 Python, 46 Java)
-- **11 web frameworks** including Flask, Django, FastAPI, Javalin, Spring Boot, and more
+- **11 frameworks** including Django, FastAPI, Javalin, Spring Boot, and more
 - **18 application domains** covering authentication, content management, gaming, file management, and more
 - **Multi-dimensional metrics**: Pass@1 for functional correctness, API Coverage (AC) for implementation completeness, and Deployment Success Rate (DSR) for deployability
-- **Support for multiple agents**: MetaGPT, DeepCode, Qwen-Agent, MS-Agent, and commercial IDEs
+- **Support for multiple agents**: MetaGPT <img src="docs/metagpt.png" height="16">, DeepCode <img src="docs/DeepCode.png" height="16">, Qwen-Agent <img src="docs/qwen-color.png" height="16">, MS-Agent <img src="docs/modelscope-color.png" height="16">, and commercial IDEs like Cursor <img src="docs/cursor.png" height="16"> and Copilot <img src="docs/githubcopilot.png" height="16">
 
-## Directory Structure
+## Installation 🚀
 
-```
-code/
-├── README.md                                    # This file
-├── config.json                                  # Configuration file
-├── requirements.txt                             # Dependencies
-│
-├── repo/                                        # Verified repositories (30 repos)
-│
-├── gen_and_eval.py                              # Main generation and evaluation script
-├── gen_and_eval_Java.py                         # Java-specific generation and evaluation
-│
-├── evaluate_repos.py                            # Repository evaluation script
-├── evaluate_repos_java.py                       # Java repository evaluation script
-│
-├── calculate_api_coverage.py                   # API Coverage metric calculation
-├── calculate_api_coverage_agents.py             # AC calculation for open-source agents
-├── calculate_api_coverage_ide.py                # AC calculation for IDE experiments
-│
-├── analyze_difficulty.py                        # Python repository difficulty classification
-├── analyze_java_difficulty.py                   # Java repository difficulty classification
-│
-├── agent/                                       # Agent framework
-│   ├── MetaGPT/                                 # MetaGPT agent
-│   ├── DeepCode/                                # DeepCode agent
-│   ├── Qwen-Agent/                              # Qwen-Agent framework
-│   └── ms-agent/                                # MS-Agent framework
-```
-
-## Installation
-
-### Prerequisites
+### Prerequisites 📋
 
 - **Python**: 3.10 or higher
 - **Java**: JDK 17 or higher (for Java repository evaluation)
 - **Conda**: Required for isolated test environments
 - **Git**: For repository management
 
-### Step 1: Clone the Repository
 
-```bash
-git clone <anonymous repository-url>
-cd code
-```
-
-### Step 2: Install Python Dependencies
+### Step 1: Install Python Dependencies 📦
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 3: Configure API Keys
+### Step 2: Configure API Keys 📝
 
 The benchmark supports multiple LLM providers. Configure your API keys as environment variables:
 
@@ -76,7 +42,7 @@ export OPENAI_API_KEY="your-api-key"
 export OPENAI_BASE_URL="https://api.openai.com/v1"  # Optional
 ```
 
-### Step 4: Install Agent Frameworks (Optional)
+### Step 3: Install Agent Frameworks (Optional) 📦
 
 If you want to evaluate specific agent frameworks:
 
@@ -102,36 +68,17 @@ cd ms-agent
 pip install -e .
 ```
 
-## Dataset
-
-### Repository Structure
-
-Each repository in RepoGenesis consists of:
-
-1. **README.md**: Comprehensive requirement document specifying:
-   - Service functionality description
-   - API endpoint definitions with input/output schemas
-   - Authentication mechanisms
-   - Error handling specifications
-   - Operational constraints (ports, deployment requirements)
-
-2. **tests/**: Black-box test suite containing:
-   - Functional correctness tests
-   - Error handling tests
-   - Edge case tests
-   - Integration tests
-
-## Usage
+## Usage 
 
 ### 1. Generate Repositories with Agents
 
-#### Using Open-Source Agents
+#### For Python Repositories
 
 ```bash
 # MetaGPT
 python gen_and_eval.py \
     --agent metagpt \
-    --repo_root repo_readme_verified \
+    --repo_root repo \
     --repo_name <repository-name> \
     --llm_model gpt-4o \
     --llm_api_key $OPENAI_API_KEY
@@ -139,26 +86,26 @@ python gen_and_eval.py \
 # DeepCode
 python gen_and_eval.py \
     --agent deepcode \
-    --repo_root repo_readme_verified \
+    --repo_root repo \
     --repo_name <repository-name> \
     --deepcode_openai_key $OPENAI_API_KEY
 
 # Qwen-Agent
 python gen_and_eval.py \
     --agent qwen-agent \
-    --repo_root repo_readme_verified \
+    --repo_root repo \
     --repo_name <repository-name> \
     --llm_model qwen-max-latest \
     --llm_api_key $DASHSCOPE_API_KEY \
     --llm_base_url https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-#### For Java Repositories
+#### For Java Repositories (the same args with Python)
 
 ```bash
 python gen_and_eval_Java.py \
     --agent <agent-name> \
-    --repo_root repo_readme_verified_java \
+    --repo_root repo_java \
     --repo_name <java-repository-name> \
     --llm_model gpt-4o \
     --llm_api_key $OPENAI_API_KEY
@@ -185,7 +132,7 @@ This will:
 #### Calculate API Coverage
 
 ```bash
-# For IDE experiments
+# For IDEs
 python calculate_api_coverage_ide.py
 
 # For open-source agents
@@ -196,27 +143,12 @@ API Coverage (AC) measures what percentage of required API endpoints are correct
 
 #### Deployment Success Rate (DSR)
 
-DSR evaluation checks if generated repositories can be successfully deployed. See the paper for detailed methodology.
-
-### 3. Analyze Difficulty Classification
-
 ```bash
-# Analyze Python repositories
-python analyze_difficulty.py
-
-# Analyze Java repositories  
-python analyze_java_difficulty.py
-
-# Visualize difficulty distributions
-python visualize_difficulty.py
+# For IDEs and open-source agents
+python test_dsr_repos.py
 ```
 
-These scripts compute composite scores based on:
-- Lines of Code (LOC)
-- Cyclomatic Complexity
-- File Count
-- API Endpoints
-- Functions and Classes
+DSR evaluation checks if generated repositories can be successfully deployed.
 
 ## Evaluation Metrics
 
@@ -253,16 +185,3 @@ Measures basic deployability by checking if:
 2. **Run evaluations** using `evaluate_repos.py` and `evaluate_repos_java.py`
 3. **Calculate metrics** using AC and DSR scripts
 4. **Aggregate results** - metrics are automatically saved to JSON files
-
-## Citation
-
-If you use RepoGenesis in your research, please cite our paper:
-
-```bibtex
-@article{anonymous2025RepoGenesis,
-  title={RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository},
-  author={Anonymous},
-  journal={Under Review},
-  year={2025}
-}
-```
