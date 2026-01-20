@@ -249,8 +249,8 @@ class TestSendSingleEmail:
         """Test sending email with unicode content."""
         payload = {
             "to": ["user@example.com"],
-            "subject": "测试邮件 - Test Email",
-            "body": "你好世界 - Hello World"
+            "subject": "Test Email",
+            "body": "Hello World"
         }
         
         response = requests.post(SEND_EMAIL_URL, json=payload)

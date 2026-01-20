@@ -33,7 +33,7 @@ def test_register_existing_user(client, test_user):
         }
     )
     assert response.status_code == 400
-    assert response.json()["detail"] == "用户名已存在"
+    assert response.json()["detail"] == "User already exists"
 
 def test_login_user(client, test_user):
     """Test user login."""
@@ -59,7 +59,7 @@ def test_login_invalid_credentials(client, test_user):
         }
     )
     assert response.status_code == 401
-    assert response.json()["detail"] == "用户名或密码错误"
+    assert response.json()["detail"] == "Invalid username or password"
 
 def test_create_category(client, test_user):
     """Test creating a category."""
@@ -143,7 +143,7 @@ def test_create_post_invalid_category(client, test_user):
         }
     )
     assert response.status_code == 404
-    assert response.json()["detail"] == "指定的分类不存在"
+    assert response.json()["detail"] == "Category not found"
 
 def test_get_posts(client, test_user):
     """Test retrieving posts list."""
@@ -280,7 +280,7 @@ def test_update_post_unauthorized(client, test_user, test_user_2):
         }
     )
     assert response.status_code == 403
-    assert response.json()["detail"] == "无权限更新此文章"
+    assert response.json()["detail"] == "No permission to update this post"
 
 def test_delete_post(client, test_user):
     """Test deleting a post."""
@@ -310,7 +310,7 @@ def test_delete_post(client, test_user):
         headers=test_user["headers"]
     )
     assert response.status_code == 200
-    assert response.json()["message"] == "文章删除成功"
+    assert response.json()["message"] == "Post deleted successfully"
     
     # Verify deletion
     get_response = client.get(f"/api/v1/posts/{post_id}")
@@ -345,7 +345,7 @@ def test_delete_post_unauthorized(client, test_user, test_user_2):
         headers=test_user_2["headers"]
     )
     assert response.status_code == 403
-    assert response.json()["detail"] == "无权限删除此文章"
+    assert response.json()["detail"] == "No permission to delete this post"
 
 def test_search_posts(client, test_user):
     """Test searching posts."""

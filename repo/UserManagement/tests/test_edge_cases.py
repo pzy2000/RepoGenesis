@@ -190,10 +190,10 @@ class TestEdgeCases:
     def test_unicode_characters_in_user_data(self):
         """Test handling of Unicode characters in user data"""
         unicode_user = {
-            "username": "test_unicode_用户",
+            "username": "test_unicode_user",
             "email": "unicode@example.com",
             "password": "TestPass123!",
-            "full_name": "Unicode用户 🚀 测试",
+            "full_name": "Unicode User 🚀 Test",
             "role": "user"
         }
         

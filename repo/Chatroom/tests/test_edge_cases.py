@@ -49,7 +49,7 @@ def test_unicode_and_length_limits(api_base_url, auth_token):
 
     ok = requests.post(
         f"{api_base_url}/rooms/{room_id}/messages",
-        json={"content": "你好，世界 🌍"},
+        json={"content": "Hello, world 🌍"},
         headers=headers,
     )
     assert ok.status_code in (200, 201)

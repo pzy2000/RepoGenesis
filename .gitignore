@@ -35,3 +35,4 @@ requirements_gen_test.txt
 sf*
 .cursorrules
 test_evaluate_repos.py
+find_chinese_readmes.py

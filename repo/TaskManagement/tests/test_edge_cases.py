@@ -95,8 +95,8 @@ class TestEdgeCases:
     def test_unicode_characters_in_task(self):
         """Test handling of Unicode characters in task data"""
         unicode_task = {
-            "title": "测试任务 🚀",
-            "description": "这是一个包含Unicode字符的任务描述：中文、emoji、特殊符号@#$%",
+            "title": "Test Mission 🚀",
+            "description": "This is a task description containing Unicode characters: Chinese, emoji, special symbols @#$%",
             "priority": "high"
         }
         

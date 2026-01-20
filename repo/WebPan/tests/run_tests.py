@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-WebPan测试运行脚本
-提供便捷的测试执行方式
-"""
 
 import sys
 import subprocess
@@ -11,20 +7,14 @@ from pathlib import Path
 
 
 def run_tests(test_type: str = "all", verbose: bool = True, coverage: bool = False):
-    """运行测试"""
-    
-    # 基础pytest命令
     cmd = ["python", "-m", "pytest"]
     
-    # 添加详细输出
     if verbose:
         cmd.append("-v")
     
-    # 添加覆盖率
     if coverage:
         cmd.extend(["--cov=.", "--cov-report=html", "--cov-report=term"])
     
-    # 根据测试类型选择测试
     if test_type == "auth":
         cmd.extend(["-m", "auth"])
     elif test_type == "upload":
@@ -44,10 +34,8 @@ def run_tests(test_type: str = "all", verbose: bool = True, coverage: bool = Fal
     elif test_type == "slow":
         cmd.extend(["-m", "slow"])
     else:
-        # 运行所有测试
         cmd.append(".")
     
-    # 添加测试目录
     cmd.append(".")
     
     print(f"Running command: {' '.join(cmd)}")
@@ -64,7 +52,6 @@ def run_tests(test_type: str = "all", verbose: bool = True, coverage: bool = Fal
 
 
 def main():
-    """主函数"""
     parser = argparse.ArgumentParser(description="WebPan API Test Runner")
     parser.add_argument(
         "--type", 
@@ -90,7 +77,6 @@ def main():
     
     args = parser.parse_args()
     
-    # 构建pytest命令
     cmd = ["python", "-m", "pytest"]
     
     if not args.quiet:
@@ -102,7 +88,6 @@ def main():
     if args.html_report:
         cmd.extend(["--html=test_report.html", "--self-contained-html"])
     
-    # 根据测试类型选择测试
     if args.type == "auth":
         cmd.extend(["-m", "auth"])
     elif args.type == "upload":
