@@ -1,4 +1,4 @@
-# RepoGenesis: Benchmark for End-to-End Repository-Level Code Generation
+# RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository
 
 This repository contains the code and data for the RepoGenesis benchmark, a comprehensive evaluation framework for assessing large language models' capability in generating complete web microservice repositories from natural language requirements.
 
