@@ -57,7 +57,7 @@ code/
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone <anonymous repository-url>
 cd code
 ```
 
