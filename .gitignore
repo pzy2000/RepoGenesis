@@ -1,7 +1,16 @@
 rubbish_bin
 results
 exps
-repo_*/
+repo_ori
+repo_ori_java
+repo_readme
+repo_readme_repeat
+repo_readme_test_oracle
+repo_readme_verified
+repo_readme_verified_java
+repo_readme_verified_java_with_t_p
+repo_scratch
+repo_scratch_*
 # repo_readme_[0-9]*/
 # repo_readme*/
 evaluation
