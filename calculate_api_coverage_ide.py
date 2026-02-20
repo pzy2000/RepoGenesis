@@ -16,6 +16,7 @@ from collections import defaultdict
 def extract_api_endpoints_from_readme(readme_path: str) -> List[Dict[str, str]]:
     """Extract API endpoints and features from README.md"""
     if not os.path.exists(readme_path):
+        print(f"README not found: {readme_path}")
         return []
     
     with open(readme_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -227,7 +228,8 @@ def calculate_ac_for_all_repos(base_path: str) -> Dict:
         
         for repo_name in sorted(repos):
             repo_path = os.path.join(config_path, repo_name)
-            readme_path = os.path.join(repo_path, 'README.md')
+            repo_path2 = repo_path.replace('code/exps/repos_CLI/repo_readme_0219_codex_gpt5.3_Python', 'code/repo_readme_verified').replace('code/exps/repos_IDE/repo_readme_0219_antigravity_gemini3pro_Java', 'code/repo_readme_verified')
+            readme_path = os.path.join(repo_path2, 'README.md')
             
             print(f"  Analyzing: {repo_name}")
             
@@ -359,16 +361,16 @@ def generate_latex_table(results: Dict) -> str:
 
 
 def main():
-    base_path = "code/exps/repos_IDE"
+    base_path = "code/exps/repos_CLI"
     
-    print("Starting API Coverage Calculation for repos_IDE...")
+    print("Starting API Coverage Calculation for repos_CLI...")
     print(f"Base path: {base_path}")
     
     # Calculate coverage
     results = calculate_ac_for_all_repos(base_path)
     
     # Save results to JSON
-    output_json = "code/api_coverage_ide_results.json"
+    output_json = "code/api_coverage_codex_cli_results.json"
     
     # Convert tuple keys to strings for JSON serialization
     results_serializable = {
@@ -382,7 +384,7 @@ def main():
     
     # Generate LaTeX table
     latex_table = generate_latex_table(results)
-    output_tex = "code/api_coverage_ide_table.tex"
+    output_tex = "code/api_coverage_codex_cli_table.tex"
     with open(output_tex, 'w', encoding='utf-8') as f:
         f.write(latex_table)
     print(f"LaTeX table saved to: {output_tex}")

@@ -13,8 +13,8 @@ import argparse
 from pathlib import Path
 from typing import Dict, Tuple, Optional
 
-BASE_DIR = "/Users/manishaqian/Real_Swe-bench/code/exps/repos_dick"
-RESULTS_FILE = "code/exps/dsr_repos_results_msagent.json"
+BASE_DIR = "/Volumes/T7/Real_Swe-bench/code/exps/repos_CLI"
+RESULTS_FILE = "code/exps/dsr_repos_results_codex_gpt5.3.json"
 
 def kill_port(port: int):
     """Kill any process using the specified port."""
