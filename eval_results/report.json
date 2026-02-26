@@ -1,0 +1,580 @@
+{
+  "metadata": {
+    "total_elapsed_seconds": 1046.0,
+    "predictions_dir": "exps/repos_CLI/repo_readme_0219_codex_gpt5.3_Python",
+    "timestamp": "2026-02-26T15:39:29.827397",
+    "harness_version": "1.0.0"
+  },
+  "summary": {
+    "total_repos": 22,
+    "python_repos": 22,
+    "java_repos": 0,
+    "avg_pass_at_1": 0.4943,
+    "avg_api_coverage": 0.9474,
+    "deployment_success_rate": 0.9545,
+    "pass_at_1_by_lang": {
+      "python": 0.4943,
+      "java": 0.0
+    },
+    "ac_by_lang": {
+      "python": 0.9474,
+      "java": 0.0
+    },
+    "dsr_by_lang": {
+      "python": 0.9545,
+      "java": 0.0
+    }
+  },
+  "results": [
+    {
+      "repo_name": "Blog",
+      "lang": "python",
+      "port": 8000,
+      "framework": "fastapi",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 0,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 11,
+        "implemented_apis": 11,
+        "score": 1.0
+      },
+      "elapsed_seconds": 45.59
+    },
+    {
+      "repo_name": "Chatroom",
+      "lang": "python",
+      "port": 8083,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 4,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "total": 9,
+        "score": 0.4444
+      },
+      "api_coverage": {
+        "total_apis": 9,
+        "implemented_apis": 9,
+        "score": 1.0
+      },
+      "elapsed_seconds": 42.36
+    },
+    {
+      "repo_name": "Customization",
+      "lang": "python",
+      "port": 8082,
+      "framework": "fastapi",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 7,
+        "failed": 34,
+        "errors": 23,
+        "skipped": 0,
+        "total": 64,
+        "score": 0.1094
+      },
+      "api_coverage": {
+        "total_apis": 10,
+        "implemented_apis": 10,
+        "score": 1.0
+      },
+      "elapsed_seconds": 41.81
+    },
+    {
+      "repo_name": "Data_Rank_Searcher",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 31,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "total": 33,
+        "score": 0.9394
+      },
+      "api_coverage": {
+        "total_apis": 4,
+        "implemented_apis": 4,
+        "score": 1.0
+      },
+      "elapsed_seconds": 46.72
+    },
+    {
+      "repo_name": "File_Relay",
+      "lang": "python",
+      "port": 8085,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 32,
+        "failed": 14,
+        "errors": 0,
+        "skipped": 0,
+        "total": 46,
+        "score": 0.6957
+      },
+      "api_coverage": {
+        "total_apis": 10,
+        "implemented_apis": 10,
+        "score": 1.0
+      },
+      "elapsed_seconds": 40.04
+    },
+    {
+      "repo_name": "GameBackend",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 3,
+        "skipped": 0,
+        "total": 3,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 10,
+        "implemented_apis": 10,
+        "score": 1.0
+      },
+      "elapsed_seconds": 151.52
+    },
+    {
+      "repo_name": "Multilingual",
+      "lang": "python",
+      "port": 5000,
+      "framework": "flask",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 33,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 33,
+        "score": 1.0
+      },
+      "api_coverage": {
+        "total_apis": 0,
+        "implemented_apis": 0,
+        "score": 0.0
+      },
+      "elapsed_seconds": 32.24
+    },
+    {
+      "repo_name": "SimpleFastPyAPI",
+      "lang": "python",
+      "port": 8000,
+      "framework": "fastapi",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 2,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 2,
+        "score": 1.0
+      },
+      "api_coverage": {
+        "total_apis": 2,
+        "implemented_apis": 2,
+        "score": 1.0
+      },
+      "elapsed_seconds": 34.93
+    },
+    {
+      "repo_name": "StructuredDataConvertor",
+      "lang": "python",
+      "port": 8000,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 4,
+        "skipped": 0,
+        "total": 4,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 0,
+        "implemented_apis": 0,
+        "score": 0.0
+      },
+      "elapsed_seconds": 33.02
+    },
+    {
+      "repo_name": "TaskManagement",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 9,
+        "failed": 35,
+        "errors": 0,
+        "skipped": 0,
+        "total": 44,
+        "score": 0.2045
+      },
+      "api_coverage": {
+        "total_apis": 6,
+        "implemented_apis": 6,
+        "score": 1.0
+      },
+      "elapsed_seconds": 39.24
+    },
+    {
+      "repo_name": "Tic-Tac-Toe",
+      "lang": "python",
+      "port": 8082,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 3,
+        "failed": 4,
+        "errors": 0,
+        "skipped": 0,
+        "total": 7,
+        "score": 0.4286
+      },
+      "api_coverage": {
+        "total_apis": 6,
+        "implemented_apis": 6,
+        "score": 1.0
+      },
+      "elapsed_seconds": 34.62
+    },
+    {
+      "repo_name": "Timer4Tasker",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 53,
+        "errors": 0,
+        "skipped": 0,
+        "total": 53,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 9,
+        "implemented_apis": 9,
+        "score": 1.0
+      },
+      "elapsed_seconds": 35.98
+    },
+    {
+      "repo_name": "UserManagement",
+      "lang": "python",
+      "port": 8081,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 0,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 8,
+        "implemented_apis": 8,
+        "score": 1.0
+      },
+      "elapsed_seconds": 107.6
+    },
+    {
+      "repo_name": "UserManagement_2",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 0,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 5,
+        "implemented_apis": 5,
+        "score": 1.0
+      },
+      "elapsed_seconds": 71.53
+    },
+    {
+      "repo_name": "WebPan",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 0,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 4,
+        "implemented_apis": 0,
+        "score": 0.0
+      },
+      "elapsed_seconds": 40.39
+    },
+    {
+      "repo_name": "django-rest-framework-crud",
+      "lang": "python",
+      "port": 8000,
+      "framework": "django",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 2,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 2,
+        "score": 1.0
+      },
+      "api_coverage": {
+        "total_apis": 8,
+        "implemented_apis": 8,
+        "score": 1.0
+      },
+      "elapsed_seconds": 34.65
+    },
+    {
+      "repo_name": "eve",
+      "lang": "python",
+      "port": 5001,
+      "framework": "eve",
+      "exit_code": 0,
+      "dsr": {
+        "success": false,
+        "message": "Service failed to start within 15s"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "total": 2,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 1,
+        "implemented_apis": 1,
+        "score": 1.0
+      },
+      "elapsed_seconds": 35.12
+    },
+    {
+      "repo_name": "flask",
+      "lang": "python",
+      "port": 5000,
+      "framework": "flask",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 7,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 7,
+        "score": 1.0
+      },
+      "api_coverage": {
+        "total_apis": 3,
+        "implemented_apis": 3,
+        "score": 1.0
+      },
+      "elapsed_seconds": 30.11
+    },
+    {
+      "repo_name": "mail_service",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 32,
+        "failed": 23,
+        "errors": 0,
+        "skipped": 0,
+        "total": 55,
+        "score": 0.5818
+      },
+      "api_coverage": {
+        "total_apis": 3,
+        "implemented_apis": 3,
+        "score": 1.0
+      },
+      "elapsed_seconds": 33.68
+    },
+    {
+      "repo_name": "rock-paper-scissors-flask",
+      "lang": "python",
+      "port": 5000,
+      "framework": "flask",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 9,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 9,
+        "score": 1.0
+      },
+      "api_coverage": {
+        "total_apis": 0,
+        "implemented_apis": 0,
+        "score": 0.0
+      },
+      "elapsed_seconds": 33.99
+    },
+    {
+      "repo_name": "simple-rbac-service",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 0,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 4,
+        "implemented_apis": 4,
+        "score": 1.0
+      },
+      "elapsed_seconds": 36.8
+    },
+    {
+      "repo_name": "synapse",
+      "lang": "python",
+      "port": 8080,
+      "framework": "any",
+      "exit_code": 0,
+      "dsr": {
+        "success": true,
+        "message": "Service started successfully"
+      },
+      "pass_at_1": {
+        "passed": 0,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "total": 5,
+        "score": 0.0
+      },
+      "api_coverage": {
+        "total_apis": 7,
+        "implemented_apis": 7,
+        "score": 1.0
+      },
+      "elapsed_seconds": 37.36
+    }
+  ]
+}

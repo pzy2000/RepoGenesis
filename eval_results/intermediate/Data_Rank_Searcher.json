@@ -1,0 +1,25 @@
+{
+  "repo_name": "Data_Rank_Searcher",
+  "lang": "python",
+  "port": 8080,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 31,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "total": 33,
+    "score": 0.9394
+  },
+  "api_coverage": {
+    "total_apis": 4,
+    "implemented_apis": 4,
+    "score": 1.0
+  },
+  "elapsed_seconds": 46.72
+}

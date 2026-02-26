@@ -1,0 +1,25 @@
+{
+  "repo_name": "Timer4Tasker",
+  "lang": "python",
+  "port": 8080,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 0,
+    "failed": 53,
+    "errors": 0,
+    "skipped": 0,
+    "total": 53,
+    "score": 0.0
+  },
+  "api_coverage": {
+    "total_apis": 9,
+    "implemented_apis": 9,
+    "score": 1.0
+  },
+  "elapsed_seconds": 35.98
+}

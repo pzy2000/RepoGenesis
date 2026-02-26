@@ -1,0 +1,25 @@
+{
+  "repo_name": "GameBackend",
+  "lang": "python",
+  "port": 8080,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 0,
+    "failed": 0,
+    "errors": 3,
+    "skipped": 0,
+    "total": 3,
+    "score": 0.0
+  },
+  "api_coverage": {
+    "total_apis": 10,
+    "implemented_apis": 10,
+    "score": 1.0
+  },
+  "elapsed_seconds": 151.52
+}

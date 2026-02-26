@@ -1,0 +1,25 @@
+{
+  "repo_name": "TaskManagement",
+  "lang": "python",
+  "port": 8080,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 9,
+    "failed": 35,
+    "errors": 0,
+    "skipped": 0,
+    "total": 44,
+    "score": 0.2045
+  },
+  "api_coverage": {
+    "total_apis": 6,
+    "implemented_apis": 6,
+    "score": 1.0
+  },
+  "elapsed_seconds": 39.24
+}

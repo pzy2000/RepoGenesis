@@ -1,0 +1,25 @@
+{
+  "repo_name": "File_Relay",
+  "lang": "python",
+  "port": 8085,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 32,
+    "failed": 14,
+    "errors": 0,
+    "skipped": 0,
+    "total": 46,
+    "score": 0.6957
+  },
+  "api_coverage": {
+    "total_apis": 10,
+    "implemented_apis": 10,
+    "score": 1.0
+  },
+  "elapsed_seconds": 40.04
+}

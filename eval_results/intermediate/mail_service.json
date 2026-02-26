@@ -1,0 +1,25 @@
+{
+  "repo_name": "mail_service",
+  "lang": "python",
+  "port": 8080,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 32,
+    "failed": 23,
+    "errors": 0,
+    "skipped": 0,
+    "total": 55,
+    "score": 0.5818
+  },
+  "api_coverage": {
+    "total_apis": 3,
+    "implemented_apis": 3,
+    "score": 1.0
+  },
+  "elapsed_seconds": 33.68
+}

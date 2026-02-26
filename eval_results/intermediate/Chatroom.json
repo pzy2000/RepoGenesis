@@ -1,0 +1,25 @@
+{
+  "repo_name": "Chatroom",
+  "lang": "python",
+  "port": 8083,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 4,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "total": 9,
+    "score": 0.4444
+  },
+  "api_coverage": {
+    "total_apis": 9,
+    "implemented_apis": 9,
+    "score": 1.0
+  },
+  "elapsed_seconds": 42.36
+}

@@ -1,0 +1,39 @@
+FROM python:3.10-slim
+
+# System dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl procps netcat-openbsd && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /repo
+
+# Copy generated repo
+COPY ./generated_repo /repo
+
+# Install repo dependencies (agent-generated requirements.txt)
+# Fallback: install common frameworks if requirements.txt is missing
+RUN if [ -f requirements.txt ]; then \
+        pip install --no-cache-dir -r requirements.txt 2>/dev/null || true; \
+    else \
+        pip install --no-cache-dir \
+            flask fastapi uvicorn django djangorestframework \
+            requests sqlalchemy pydantic 2>/dev/null || true; \
+    fi
+
+# Copy golden oracle tests (overwrite any agent-generated tests)
+COPY ./golden_tests /repo/tests
+
+# Install test dependencies from tests/requirements.txt if available,
+# then always ensure core test packages are present
+RUN if [ -f /repo/tests/requirements.txt ]; then \
+        pip install --no-cache-dir -r /repo/tests/requirements.txt 2>/dev/null || true; \
+    fi && \
+    pip install --no-cache-dir pytest pytest-json-report requests httpx 2>/dev/null || true
+
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8080
+
+ENTRYPOINT ["/entrypoint.sh"]

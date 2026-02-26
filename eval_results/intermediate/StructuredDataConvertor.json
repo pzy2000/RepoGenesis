@@ -1,0 +1,25 @@
+{
+  "repo_name": "StructuredDataConvertor",
+  "lang": "python",
+  "port": 8000,
+  "framework": "any",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 0,
+    "failed": 0,
+    "errors": 4,
+    "skipped": 0,
+    "total": 4,
+    "score": 0.0
+  },
+  "api_coverage": {
+    "total_apis": 0,
+    "implemented_apis": 0,
+    "score": 0.0
+  },
+  "elapsed_seconds": 33.02
+}

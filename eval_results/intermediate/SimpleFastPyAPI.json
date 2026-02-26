@@ -1,0 +1,25 @@
+{
+  "repo_name": "SimpleFastPyAPI",
+  "lang": "python",
+  "port": 8000,
+  "framework": "fastapi",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "total": 2,
+    "score": 1.0
+  },
+  "api_coverage": {
+    "total_apis": 2,
+    "implemented_apis": 2,
+    "score": 1.0
+  },
+  "elapsed_seconds": 34.93
+}

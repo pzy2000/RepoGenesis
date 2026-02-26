@@ -1,0 +1,12 @@
+# RepoGenesis Evaluation Harness Dependencies
+#
+# The harness intentionally has minimal dependencies.
+# Docker is required for DSR and Pass@1 evaluation but is called via subprocess.
+# No docker SDK dependency needed.
+
+# Rich terminal UI — progress bars and formatted log output.
+# Gracefully degrades if not installed (all progress features become no-ops).
+rich>=13.0.0
+
+# For running tests:
+#   pip install pytest

@@ -1,0 +1,25 @@
+{
+  "repo_name": "rock-paper-scissors-flask",
+  "lang": "python",
+  "port": 5000,
+  "framework": "flask",
+  "exit_code": 0,
+  "dsr": {
+    "success": true,
+    "message": "Service started successfully"
+  },
+  "pass_at_1": {
+    "passed": 9,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "total": 9,
+    "score": 1.0
+  },
+  "api_coverage": {
+    "total_apis": 0,
+    "implemented_apis": 0,
+    "score": 0.0
+  },
+  "elapsed_seconds": 33.99
+}

@@ -1,0 +1,25 @@
+{
+  "repo_name": "eve",
+  "lang": "python",
+  "port": 5001,
+  "framework": "eve",
+  "exit_code": 0,
+  "dsr": {
+    "success": false,
+    "message": "Service failed to start within 15s"
+  },
+  "pass_at_1": {
+    "passed": 0,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "total": 2,
+    "score": 0.0
+  },
+  "api_coverage": {
+    "total_apis": 1,
+    "implemented_apis": 1,
+    "score": 1.0
+  },
+  "elapsed_seconds": 35.12
+}
