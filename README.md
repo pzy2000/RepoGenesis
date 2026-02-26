@@ -1,5 +1,13 @@
 # RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository 🚀
 
+[//]: # ([![Project]&#40;http://img.shields.io/badge/Project-SER-E3E4C8.svg&#41;]&#40;https://microsoft.github.io/DKI_LLM/ser/ser_index.html&#41;)
+
+[![Paper](http://img.shields.io/badge/Paper-arxiv.2601.13943-99D4C8.svg)](https://arxiv.org/abs/2601.13943)
+
+[![Leaderboard](https://img.shields.io/badge/Leaderboard-RepoGenesis.svg)](http://23.83.232.182:4090/)
+
+🔥 We released the Leaderboard! You can check the latest evaluation results of different agents and IDEs on our [Leaderboard](http://23.83.232.182:4090/)
+
 This repository contains the code and data for RepoGenesis, the first multilingual benchmark for repository-level end-to-end web microservice generation. RepoGenesis assesses LLMs' capability in generating complete web microservice repositories from natural language requirements.
 
 ## Overview ⭐
