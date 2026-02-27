@@ -1,11 +1,21 @@
-# RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository
+# RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository 🚀
 
-This repository contains the code and data for **RepoGenesis**, the first multilingual benchmark for repository-level end-to-end web microservice generation. RepoGenesis assesses LLMs' capability in generating complete web microservice repositories from natural language requirements.
+[//]: # ([![Project]&#40;http://img.shields.io/badge/Project-SER-E3E4C8.svg&#41;]&#40;https://microsoft.github.io/DKI_LLM/ser/ser_index.html&#41;)
+
+[![Paper](http://img.shields.io/badge/Paper-arxiv.2601.13943-99D4C8.svg)](https://arxiv.org/abs/2601.13943)
+[![Website](http://img.shields.io/badge/Website-RepoGenesis-99D4C8.svg)](https://microsoft.github.io/DKI_LLM/RepoGenesis/RepoGenesis_index.html)
+[![Leaderboard](https://img.shields.io/badge/Leaderboard-RepoGenesis-99D4C8.svg)](http://23.83.232.182:4090/)
+
+🔥 [2026/02/25] We released the [Leaderboard](http://23.83.232.182:4090/)! You can now check the latest evaluation results of different agents and IDEs.
+
+This repository contains the code and data for RepoGenesis, the first multilingual benchmark for repository-level end-to-end web microservice generation. RepoGenesis assesses LLMs' capability in generating complete web microservice repositories from natural language requirements.
+
+Refer to [the official github repo](https://github.com/microsoft/DKI_LLM/tree/main/RepoGenesis) for up-to-date information.
+
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Benchmark Statistics](#benchmark-statistics)
 - [Evaluation Metrics](#evaluation-metrics)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
@@ -14,75 +24,22 @@ This repository contains the code and data for **RepoGenesis**, the first multil
   - [Step 2 — Docker-based Evaluation (Recommended)](#step-2--docker-based-evaluation-recommended)
   - [Step 3 — Legacy Script Evaluation](#step-3--legacy-script-evaluation)
   - [Step 4 — Aggregate and Reproduce Paper Results](#step-4--aggregate-and-reproduce-paper-results)
-- [Repository Structure](#repository-structure)
-- [Verified Benchmark Repos](#verified-benchmark-repos)
 - [Development](#development)
 
----
-
-## Overview
+## Overview ⭐
 
 <div align="center">
-  <img width="90%" src="RepoGenesis.png">
+  <img width="90%" src="docs/RepoGenesis.png">
 </div>
 
-RepoGenesis is the first benchmark for evaluating repository-level microservice generation from natural language requirements. Unlike existing benchmarks that focus on function-level or class-level code generation, RepoGenesis challenges LLMs to generate repositories from scratch — given only a README, produce a fully working, deployable web microservice.
+RepoGenesis is the first benchmark for evaluating repository-level microservice generation from natural language requirements. Unlike existing benchmarks that focus on function-level or class-level code generation, RepoGenesis challenges LLMs to generate repositories from scratch.
 
 **Key Features:**
-
-- **106 diverse web microservice repositories** (60 Python, 46 Java)
-- **11 frameworks** including Django, FastAPI, Flask, Javalin, Spring Boot, Quarkus, Micronaut, and more
+- **11 frameworks** including Django, FastAPI, Javalin, Spring Boot, and more
 - **18 application domains** covering authentication, content management, gaming, file management, and more
 - **Multi-dimensional metrics**: Pass@1 for functional correctness, API Coverage (AC) for implementation completeness, and Deployment Success Rate (DSR) for deployability
 - **Docker-based isolated evaluation** via `eval_harness` — reproducible, hermetic, no conda required
-- **Support for multiple agents**: MetaGPT, DeepCode, Qwen-Agent, MS-Agent, and commercial IDEs like Cursor and GitHub Copilot
-
----
-
-## Benchmark Statistics
-
-| Split | Python | Java | Total |
-|---|---|---|---|
-| Full benchmark | 60 | 46 | 106 |
-| **Verified (with golden oracle tests)** | **22** | **8** | **30** |
-
-The **Verified** subset is the primary evaluation target. Each repo has a README specification, a set of golden oracle tests (never seen by the agent), and a known service port.
-
----
-
-## Evaluation Metrics
-
-### Pass@1 — Functional Correctness
-
-Measures the fraction of golden oracle test cases that pass on the first attempt:
-
-```
-Pass@1 = passed_tests / max(AST_count, total_pytest_tests)
-```
-
-Tests are run against the running service using black-box HTTP requests (Python: `pytest`; Java: Maven Surefire). The golden oracle tests are injected into the generated repo by the harness — the agent never sees them.
-
-### API Coverage (AC) — Implementation Completeness
-
-Measures what fraction of the API endpoints specified in the README are implemented in the generated code:
-
-```
-AC = implemented_endpoints / total_required_endpoints
-```
-
-Endpoints are extracted from the README using four regex patterns (explicit `METHOD /path` notation, markdown tables, code blocks, and feature-list fallback). Implementation is verified by static analysis — searching for the matching decorator and path string in the same source file.
-
-### Deployment Success Rate (DSR) — Deployability
-
-Measures whether the generated service can actually start up:
-
-1. Install dependencies (`pip install -r requirements.txt` or `mvn install`)
-2. Start the service (`bash start.sh` or `mvn spring-boot:run`)
-3. Check that the process stays alive and/or prints a recognisable startup message (e.g., `"Uvicorn running"`, `"Tomcat started"`)
-
-DSR is binary per repo (1 = deployed successfully, 0 = failed), then averaged across repos.
-
----
+- **Support for multiple agents**: MetaGPT <img src="docs/metagpt.png" height="16">, DeepCode <img src="docs/DeepCode.png" height="16">, Qwen-Agent <img src="docs/qwen-color.png" height="16">, MS-Agent <img src="docs/modelscope-color.png" height="16">, and commercial IDEs like Cursor <img src="docs/cursor.png" height="16"> and Copilot <img src="docs/githubcopilot.png" height="16">
 
 ## Installation
 
@@ -169,51 +126,30 @@ The evaluation pipeline consists of four stages. Stages 1–2 are the recommende
                           └─────────────────┘
 ```
 
----
-
 ### Step 1 — Generate Repositories
 
-The agent receives only the README for each benchmark repo and must produce a complete repository (source code + `start.sh` + `requirements.txt` or `pom.xml`). Golden oracle tests are **never** shown to the agent.
-
-#### Python Repos
+#### For Python Repositories
 
 ```bash
 # MetaGPT
 python gen_and_eval.py \
     --agent metagpt \
-    --repo_root ./generated \
-    --repo_name <repo-name> \
+    --repo_root repo \
+    --repo_name <repository-name> \
     --llm_model gpt-4o \
     --llm_api_key $OPENAI_API_KEY
-
-# DeepCode
-python gen_and_eval.py \
-    --agent deepcode \
-    --repo_root ./generated \
-    --repo_name <repo-name> \
-    --deepcode_openai_key $OPENAI_API_KEY
-
-# Qwen-Agent
-python gen_and_eval.py \
-    --agent qwen-agent \
-    --repo_root ./generated \
-    --repo_name <repo-name> \
-    --llm_model qwen-max-latest \
-    --llm_api_key $DASHSCOPE_API_KEY \
-    --llm_base_url https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-#### Java Repos
+#### For Java Repositories (the same args with Python)
 
 ```bash
 python gen_and_eval_Java.py \
     --agent <agent-name> \
-    --repo_root ./generated_java \
-    --repo_name <repo-name> \
+    --repo_root repo_java \
+    --repo_name <java-repository-name> \
     --llm_model gpt-4o \
     --llm_api_key $OPENAI_API_KEY
 ```
-
 After generation, your `--repo_root` will contain one subdirectory per repo, each with the generated source code. This directory is then passed to the evaluation harness as `--predictions_dir`.
 
 ---
@@ -459,98 +395,35 @@ python -m evaluation.run_eval \
     --output results.json
 ```
 
----
+## Evaluation Metrics
 
-## Repository Structure
+### Pass@1 (Functional Correctness)
+
+Measures whether the generated repository passes all test cases on the first attempt:
 
 ```
-.
-├── gen_and_eval.py                          # Python repo generation + evaluation entry point
-├── gen_and_eval_Java.py                     # Java repo generation + evaluation entry point
-├── evaluate_repos.py                        # Legacy Python Pass@1 evaluator (conda-based)
-├── evaluate_repos_java.py                   # Legacy Java Pass@1 evaluator (conda-based)
-├── calculate_api_coverage.py                # AC metric calculator
-├── calculate_api_coverage_ide.py            # AC calculator (IDE configs)
-├── calculate_api_coverage_agents.py         # AC calculator (agent configs)
-├── test_dsr_repos.py                        # DSR tester (Python)
-├── test_evaluate_repos.py                   # Unit tests for legacy orchestrator
-├── requirements.txt                         # Root orchestrator dependencies
-├── config.json                              # LLM config (base_url, api_key, model)
-│
-├── eval_harness/                            # Docker-based evaluation harness (recommended)
-│   ├── run_evaluation.py                    # Main CLI entry point
-│   ├── constants.py                         # 30 verified repo specs, timeouts, markers
-│   ├── test_spec.py                         # RepoSpec dataclass + factory functions
-│   ├── docker_build.py                      # Docker image build/remove/check
-│   ├── docker_utils.py                      # Container lifecycle management
-│   ├── grading.py                           # DSR + Pass@1 result grading
-│   ├── log_parsers.py                       # pytest and Maven Surefire log parsers
-│   ├── api_coverage.py                      # AC metric (static analysis)
-│   ├── reporting.py                         # Report generation and summary table
-│   ├── dockerfiles/
-│   │   ├── Dockerfile.python                # Python evaluation image
-│   │   └── Dockerfile.java                  # Java evaluation image
-│   ├── scripts/
-│   │   └── entrypoint.sh                    # 3-phase container entrypoint
-│   └── tests/                               # 200 unit tests for eval_harness
-│
-├── agent/                                   # Agent framework adapters
-├── evaluation/                              # LLM-based scoring workflow
-├── exps/                                    # Experiment scripts and saved results
-├── repo/                                    # Seed repos (READMEs for generation)
-├── repo_golden_oracle/                      # Ground truth repos (code + tests)
-├── repo_readme_verified/                    # 22 Python verified repos (README + tests)
-├── repo_readme_verified_java_with_t_p/      # 8 Java verified repos (README + pom.xml + tests)
-├── repo_readme_verified_python_no_t/        # 22 Python READMEs only (agent input)
-├── repo_readme_verified_java_no_t_with_p/   # 8 Java READMEs + pom.xml (agent input)
-└── sft_training/                            # SFT training pipeline
+Pass@1 = (Number of passed test cases) / (Total test cases)
 ```
 
----
+A repository achieves Pass@1 = 1.0 only if all test cases pass.
 
-## Verified Benchmark Repos
+### API Coverage (AC)
 
-### Python (22 repos)
+Measures implementation completeness by checking if all required API endpoints are present:
 
-| Repo Name | Framework | Port |
-|---|---|---|
-| Blog | FastAPI | 8000 |
-| Chatroom | any | 8083 |
-| Customization | FastAPI | 8082 |
-| Data_Rank_Searcher | any | 8080 |
-| django-rest-framework-crud | Django | 8000 |
-| eve | Eve | 5001 |
-| File_Relay | any | 8085 |
-| flask | Flask | 5000 |
-| GameBackend | any | 8080 |
-| mail_service | any | 8080 |
-| Multilingual | Flask | 5000 |
-| rock-paper-scissors-flask | Flask | 5000 |
-| simple-rbac-service | any | 8080 |
-| SimpleFastPyAPI | FastAPI | 8000 |
-| StructuredDataConvertor | any | 8000 |
-| synapse | any | 8080 |
-| TaskManagement | any | 8080 |
-| Tic-Tac-Toe | any | 8082 |
-| Timer4Tasker | any | 8080 |
-| UserManagement | any | 8081 |
-| UserManagement_2 | any | 8080 |
-| WebPan | any | 8080 |
+```
+AC = (Number of implemented API endpoints) / (Total required API endpoints)
+```
 
-### Java (8 repos)
+API endpoints are extracted from README specifications and validated in the generated code.
 
-| Repo Name | Framework | Port |
-|---|---|---|
-| javalin-online-judge | Javalin | 7000 |
-| javalin-task-manager | Javalin | 7000 |
-| javalin-user-auth-platform | Javalin | 7070 |
-| micronaut-ci-status | Micronaut | 8080 |
-| quarkus-blog-cms | Quarkus | 8080 |
-| spark-dashboard-backend | Spark | 4567 |
-| spring-boot-course-scheduling | Spring Boot | 8080 |
-| springboot-chat-gateway | Spring Boot | 8080 |
+### Deployment Success Rate (DSR)
 
----
+Measures basic deployability by checking if:
+1. Dependencies can be installed
+2. Service can start without errors
+3. Health check endpoint responds
+
 
 ## Development
 
@@ -598,3 +471,27 @@ REPO_SPECS["my-new-service"] = {
 3. Add golden oracle tests to `repo_readme_verified/my-new-service/tests/`.
 4. Update `TOTAL_PYTHON_REPOS` (or `TOTAL_JAVA_REPOS`) in `constants.py`.
 5. Add a test row to `eval_harness/tests/test_constants.py`.
+
+
+## Citation
+If you find this repository useful, please considering giving ⭐ or citing:
+```bibtex
+@misc{peng2026repogenesisbenchmarkingendtoendmicroservice,
+      title={RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository}, 
+      author={Zhiyuan Peng and Xin Yin and Pu Zhao and Fangkai Yang and Lu Wang and Ran Jia and Xu Chen and Qingwei Lin and Saravan Rajmohan and Dongmei Zhang},
+      year={2026},
+      eprint={2601.13943},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2601.13943}, 
+}
+```
+
+
+## Contributing
+
+This project welcomes contributions and suggestions.
+
+## Question
+
+If you want to contact the author, please email: `pzy2000@sjtu.edu.cn` and `xyin@zju.edu.cn`.

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RepoGenesis Leaderboards</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" href="img/repogenesis.png" type="image/png">
+    <script>
+      // Initialize theme immediately to prevent flash
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'light' || (!storedTheme && !prefersDark)) {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+</head>
+<body>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Mobile header -->
+    <header class="mobile-header">
+        <a href="index.html" class="mobile-logo">
+            <img src="img/repogenesis.png" alt="RepoGenesis logo" class="sidebar-logo-icon">
+            RepoGenesis
+        </a>
+        <button class="sidebar-opener" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="img/repogenesis.png" alt="RepoGenesis logo" class="sidebar-logo-icon">
+                RepoGenesis
+            </a>
+            <button class="mobile-nav-toggle" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="nav-link active" data-page="index">Leaderboards</a></li>
+
+                <li class="nav-section-title">BENCHMARKS</li>
+                <li><a href="index.html#verified" class="nav-link" data-page="verified">RepoGenesis Verified</a></li>
+                <li><a href="index.html#full" class="nav-link" data-page="full">RepoGenesis Full</a></li>
+                <li><a href="index.html#no-docker" class="nav-link" data-page="no-docker">Verified (Without Docker)</a></li>
+
+                <li class="nav-section-title">ABOUT</li>
+                <li><a href="https://arxiv.org/abs/repogenesis" class="nav-link" data-page="paper" target="_blank" rel="noopener">Paper <i class="fas fa-external-link-alt"></i></a></li>
+                <li><a href="https://github.com/repogenesis/RepoGenesis" class="nav-link" data-page="docs" target="_blank" rel="noopener">Docs <i class="fas fa-external-link-alt"></i></a></li>
+                <li><a href="mailto:pzy2000@sjtu.edu.cn" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="#" class="nav-link" data-page="citations" id="citations-link">Citations</a></li>
+                <!-- <li><a href="#" class="nav-link" data-page="press">Press</a></li> -->
+                <li><a href="submit.html" class="nav-link-submit" data-page="submit">Submit</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="https://github.com/repogenesis/RepoGenesis" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main-content">
+
+        <!-- Page header -->
+        <header class="page-header">
+            <div class="container">
+                <h1>
+                    <img src="img/repogenesis.png" alt="RepoGenesis Logo" class="header-logo-small">
+                    Official Leaderboards
+                </h1>
+                <p class="subtitle">the 1st to Benchmark LLMs on repository-level microservice generation from README specs.</p>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <section class="container">
+
+            <!-- Announcement banner -->
+            <div class="announcement-container">
+                <p>
+                    RepoGenesis evaluates <strong>106 repos</strong> (60 Python, 46 Java) across three metrics:
+                    <strong>Pass@1</strong> (test pass rate), <strong>AC</strong> (API Coverage), and <strong>DSR</strong> (Deployment Success Rate).
+                    <a href="https://github.com/pzy2000/RepoGenesis">Learn more here.</a>
+                </p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="leaderboard-tabs">
+                <div class="tab-list">
+                    <button class="tab-button active" data-tab="verified">Verified</button>
+                    <button class="tab-button" data-tab="full">Full</button>
+                    <button class="tab-button" data-tab="verified_no_docker">Verified (Without Docker)</button>
+                </div>
+            </div>
+
+            <!-- Tab description -->
+            <div id="tab-description" class="tab-description">
+                <em>Verified</em> evaluates systems on 30 verified repos (22 Python + 8 Java) using the full Docker-based harness with all three metrics: Pass@1, AC, and DSR.
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-controls">
+                <span class="filter-title">Filters:</span>
+                <select id="filter-category" class="filter-select" title="Filter by category">
+                    <option value="all">All Categories</option>
+                    <option value="Agent">Agent</option>
+                    <option value="IDE">IDE</option>
+                    <option value="CLI">CLI</option>
+                </select>
+                <select id="filter-language" class="filter-select" title="Filter by language">
+                    <option value="all">All Languages</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                </select>
+            </div>
+
+            <!-- Leaderboard table (dynamically populated) -->
+            <div id="leaderboard-container">
+                <!-- Table will be rendered by JS -->
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Model</th>
+                            <th>Category</th>
+                            <th>Lang</th>
+                            <th>Pass@1</th>
+                            <th>AC</th>
+                            <th>DSR</th>
+                            <th>Org</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="10" style="text-align:center;padding:24px;color:var(--text-muted)">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <span>&copy; 2026 RepoGenesis Team. All rights reserved.</span>
+            <div>
+                <a href="https://github.com/repogenesis/RepoGenesis" target="_blank" rel="noopener">GitHub</a>
+                <a href="#">HuggingFace</a>
+                <a href="https://arxiv.org/abs/repogenesis" target="_blank" rel="noopener">Paper</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- BibTeX Citation Modal -->
+    <div class="bibtex-modal-overlay" id="bibtex-modal" role="dialog" aria-modal="true" aria-labelledby="bibtex-modal-title">
+        <div class="bibtex-modal">
+            <div class="bibtex-modal-header">
+                <h3 id="bibtex-modal-title">BibTeX formatted citation</h3>
+                <button class="bibtex-modal-close" id="bibtex-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="bibtex-modal-body">
+                <textarea class="bibtex-textarea" readonly>@misc{peng2026repogenesisbenchmarkingendtoendmicroservice,
+      title={RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository},
+      author={Zhiyuan Peng and Xin Yin and Pu Zhao and Fangkai Yang and Lu Wang and Ran Jia and Xu Chen and Qingwei Lin and Saravan Rajmohan and Dongmei Zhang},
+      year={2026},
+      eprint={2601.13943},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2601.13943},
+}</textarea>
+            </div>
+            <div class="bibtex-modal-footer">
+                Data provided by: <a href="https://info.arxiv.org/help/api/index" target="_blank" rel="noopener">arXiv API</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>

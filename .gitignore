@@ -1,3 +1,4 @@
+AGENTS.md
 rubbish_bin
 results
 exps
@@ -45,3 +46,15 @@ sf*
 .cursorrules
 test_evaluate_repos.py
 find_chinese_readmes.py
+eval_results/report_2026-02-26_15-52-17.json
+eval_results/intermediate/2026-02-26_15-52-17/javalin-online-judge.json
+eval_results/intermediate/2026-02-26_15-52-17/javalin-task-manager.json
+eval_results/intermediate/2026-02-26_15-52-17/javalin-user-auth-platform.json
+eval_results/intermediate/2026-02-26_15-52-17/micronaut-ci-status.json
+eval_results/intermediate/2026-02-26_15-52-17/quarkus-blog-cms.json
+eval_results/intermediate/2026-02-26_15-52-17/spark-dashboard-backend.json
+eval_results/intermediate/2026-02-26_15-52-17/spring-boot-course-scheduling.json
+eval_results/intermediate/2026-02-26_15-52-17/springboot-chat-gateway.json
+leaderboard/data/results_dummy.json
+leaderboard/scripts/verify_paper_data.py
+.opencode/plans/leaderboard-plan.md

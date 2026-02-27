@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit to RepoGenesis</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="icon" href="img/repogenesis.png" type="image/png">
+    <script>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'light' || (!storedTheme && !prefersDark)) {
+          document.documentElement.classList.add('light-mode');
+        }
+      })();
+    </script>
+</head>
+<body>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Mobile header -->
+    <header class="mobile-header">
+        <a href="index.html" class="mobile-logo">
+            <img src="img/repogenesis.png" alt="RepoGenesis logo" class="sidebar-logo-icon">
+            RepoGenesis
+        </a>
+        <button class="sidebar-opener" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar (same as index.html) -->
+    <aside class="sidebar" aria-label="Sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="img/repogenesis.png" alt="RepoGenesis logo" class="sidebar-logo-icon">
+                RepoGenesis
+            </a>
+            <button class="mobile-nav-toggle" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="nav-link" data-page="index">Leaderboards</a></li>
+
+                <li class="nav-section-title">BENCHMARKS</li>
+                <li><a href="index.html#verified" class="nav-link" data-page="verified">RepoGenesis Verified</a></li>
+                <li><a href="index.html#full" class="nav-link" data-page="full">RepoGenesis Full</a></li>
+                <li><a href="index.html#no-docker" class="nav-link" data-page="no-docker">Verified (Without Docker)</a></li>
+
+                <li class="nav-section-title">ABOUT</li>
+                <li><a href="https://arxiv.org/pdf/2601.13943" class="nav-link" data-page="paper" target="_blank" rel="noopener">Paper <i class="fas fa-external-link-alt"></i></a></li>
+                <li><a href="https://github.com/pzy2000/RepoGenesis" class="nav-link" data-page="docs" target="_blank" rel="noopener">Docs <i class="fas fa-external-link-alt"></i></a></li>
+                <li><a href="mailto:pzy2000@sjtu.edu.cn" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="#" class="nav-link" data-page="citations" id="citations-link">Citations</a></li>
+                <!-- <li><a href="#" class="nav-link" data-page="press">Press</a></li> -->
+                <li><a href="submit.html" class="nav-link-submit active" data-page="submit">Submit</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="https://github.com/pzy2000/RepoGenesis" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main-content">
+
+        <section class="container">
+
+            <!-- Submit header -->
+            <div class="submit-header">
+                <h1>Submit to RepoGenesis</h1>
+                <p>Guidelines for contributing your model's results to the RepoGenesis leaderboard.</p>
+            </div>
+
+            <!-- Info banner -->
+            <div class="info-banner">
+                All official submissions to the RepoGenesis leaderboard are maintained at
+                <a href="https://github.com/pzy2000/RepoGenesis" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i> RepoGenesis/experiments
+                </a>
+            </div>
+
+            <!-- Evaluating section -->
+            <div class="submit-section">
+                <h2>Evaluating on RepoGenesis</h2>
+                <p>
+                    Check out the main <a href="https://github.com/pzy2000/RepoGenesis" target="_blank" rel="noopener">RepoGenesis</a>
+                    repository docs for instructions on how to generate and evaluate predictions on RepoGenesis [Verified, Full, Verified (Without Docker)].
+                </p>
+                <p>
+                    RepoGenesis evaluation can be carried out either locally or via cloud compute platforms with our
+                    <a href="https://github.com/pzy2000/RepoGenesis" target="_blank" rel="noopener">eval_harness</a> tool (Recommended).
+                </p>
+                <p>
+                    The evaluation harness uses Docker containers to deploy generated microservice repos, run test suites (Pass@1),
+                    measure API coverage (AC) via static analysis, and verify deployment success (DSR).
+                </p>
+            </div>
+
+            <hr class="submit-divider">
+
+            <!-- Submit to Leaderboard section -->
+            <div class="submit-section">
+                <h2>Submit to Leaderboard</h2>
+                <p>
+                    If you are interested in submitting your system or model to any of our leaderboards,
+                    please follow the instructions posted at
+                    <a href="https://github.com/pzy2000/RepoGenesis" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> RepoGenesis/experiments</a>.
+                </p>
+                <p>
+                    Submissions should include:
+                </p>
+                <ul style="color: var(--text-secondary); font-size: 14px; line-height: 2; padding-left: 24px;">
+                    <li>Generated repository code for all benchmark repos</li>
+                    <li>Evaluation results JSON from the eval_harness</li>
+                    <li>A brief description of your system/model and configuration</li>
+                    <li>Date of generation and model version information</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <span>&copy; 2026 RepoGenesis Team. All rights reserved.</span>
+            <div>
+                <a href="https://github.com/pzy2000/RepoGenesis" target="_blank" rel="noopener">GitHub</a>
+                <a href="#">HuggingFace</a>
+                <a href="https://arxiv.org/abs/2601.13943" target="_blank" rel="noopener">Paper</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- BibTeX Citation Modal -->
+    <div class="bibtex-modal-overlay" id="bibtex-modal" role="dialog" aria-modal="true" aria-labelledby="bibtex-modal-title">
+        <div class="bibtex-modal">
+            <div class="bibtex-modal-header">
+                <h3 id="bibtex-modal-title">BibTeX formatted citation</h3>
+                <button class="bibtex-modal-close" id="bibtex-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="bibtex-modal-body">
+                <textarea class="bibtex-textarea" readonly>@misc{peng2026repogenesisbenchmarkingendtoendmicroservice,
+      title={RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository},
+      author={Zhiyuan Peng and Xin Yin and Pu Zhao and Fangkai Yang and Lu Wang and Ran Jia and Xu Chen and Qingwei Lin and Saravan Rajmohan and Dongmei Zhang},
+      year={2026},
+      eprint={2601.13943},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2601.13943},
+}</textarea>
+            </div>
+            <div class="bibtex-modal-footer">
+                Data provided by: <a href="https://info.arxiv.org/help/api/index" target="_blank" rel="noopener">arXiv API</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme toggle JS (minimal, no leaderboard.js needed) -->
+    <script>
+      (function() {
+        // Theme toggle
+        var toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function() {
+            var isLight = document.documentElement.classList.toggle('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            var icon = toggleBtn.querySelector('i');
+            if (icon) icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+          });
+        }
+        // Update icon on load
+        var icon = document.querySelector('#theme-toggle i');
+        if (icon) {
+          icon.className = document.documentElement.classList.contains('light-mode') ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Mobile sidebar
+        var sidebar = document.querySelector('.sidebar');
+        var overlay = document.querySelector('.sidebar-overlay');
+        var opener = document.querySelector('.sidebar-opener');
+        var closer = document.querySelector('.mobile-nav-toggle');
+        function openSidebar() {
+          if (sidebar) sidebar.classList.add('open');
+          if (overlay) overlay.classList.add('open');
+        }
+        function closeSidebar() {
+          if (sidebar) sidebar.classList.remove('open');
+          if (overlay) overlay.classList.remove('open');
+        }
+        if (opener) opener.addEventListener('click', openSidebar);
+        if (closer) closer.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
+        // BibTeX Citations modal
+        var bibtexModal = document.getElementById('bibtex-modal');
+        var citationsLink = document.getElementById('citations-link');
+        var bibtexClose = document.getElementById('bibtex-modal-close');
+        function openBibtex(e) {
+          e.preventDefault();
+          if (bibtexModal) bibtexModal.classList.add('open');
+        }
+        function closeBibtex() {
+          if (bibtexModal) bibtexModal.classList.remove('open');
+        }
+        if (citationsLink) citationsLink.addEventListener('click', openBibtex);
+        if (bibtexClose) bibtexClose.addEventListener('click', closeBibtex);
+        if (bibtexModal) bibtexModal.addEventListener('click', function(e) {
+          if (e.target === bibtexModal) closeBibtex();
+        });
+      })();
+    </script>
+</body>
+</html>
