@@ -18,6 +18,7 @@ repo_scratch_*
 evaluation
 **/*.pyc
 .DS_Store
+SWE-bench
 **/.DS_Store
 **/.coverage
 api_coverage_agents_results.json
