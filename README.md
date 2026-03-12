@@ -36,7 +36,7 @@ RepoGenesis is the first benchmark for evaluating repository-level microservice 
 
 **Key Features:**
 - **11 frameworks** including Django, FastAPI, Javalin, Spring Boot, and more
-- **18 application domains** covering authentication, content management, gaming, file management, and more
+- **18 application domains** covering authentication, content management, ***gaming***, file management, and more
 - **Multi-dimensional metrics**: Pass@1 for functional correctness, API Coverage (AC) for implementation completeness, and Deployment Success Rate (DSR) for deployability
 - **Docker-based isolated evaluation** via `eval_harness` — reproducible, hermetic, no conda required
 - **Support for multiple agents**: MetaGPT <img src="docs/metagpt.png" height="16">, DeepCode <img src="docs/DeepCode.png" height="16">, Qwen-Agent <img src="docs/qwen-color.png" height="16">, MS-Agent <img src="docs/modelscope-color.png" height="16">, and commercial IDEs like Cursor <img src="docs/cursor.png" height="16"> and Copilot <img src="docs/githubcopilot.png" height="16">
